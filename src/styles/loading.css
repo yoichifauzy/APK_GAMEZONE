@@ -1,0 +1,360 @@
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.loading-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.loading-particle {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  background: #00d9ff;
+  border-radius: 50%;
+  animation: particleFloat linear infinite;
+  box-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.loading-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.loading-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 2rem;
+}
+
+.logo-hexagon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #00d9ff 0%, #0070f3 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hexagonPulse 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.logo-hexagon i {
+  font-size: 2.5rem;
+  color: #fff;
+  animation: gamepadSpin 3s linear infinite;
+}
+
+@keyframes hexagonPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes gamepadSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(0, 217, 255, 0.3);
+  border-radius: 50%;
+  animation: ringExpand 3s ease-out infinite;
+}
+
+.ring-1 {
+  width: 100px;
+  height: 100px;
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  width: 120px;
+  height: 120px;
+  animation-delay: 1s;
+}
+
+.ring-3 {
+  width: 140px;
+  height: 140px;
+  animation-delay: 2s;
+}
+
+@keyframes ringExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.loading-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #00d9ff 0%, #0070f3 50%, #ff3d71 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(45deg);
+  }
+}
+
+.loading-subtitle {
+  font-family: "Electrolize", sans-serif;
+  font-size: 1.1rem;
+  color: #a0aec0;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.loading-bar-container {
+  margin-bottom: 2rem;
+}
+
+.loading-bar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.loading-bar-fill {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(90deg, #00d9ff 0%, #0070f3 50%, #00ff88 100%);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+}
+
+.loading-bar-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  animation: barGlowSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes barGlowSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.loading-percentage {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  color: #00d9ff;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.loading-tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 10px;
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+.loading-tips i {
+  color: #ffd700;
+  font-size: 1.2rem;
+  animation: tipBulbPulse 2s ease-in-out infinite;
+}
+
+@keyframes tipBulbPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.loading-footer {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loading-icons {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.loading-icons i {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.loading-icons i:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading-icons i:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.loading-icons i:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.loading-icons i:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.7;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loading-title {
+    font-size: 2rem;
+  }
+
+  .loading-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .loading-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .logo-hexagon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo-hexagon i {
+    font-size: 2rem;
+  }
+
+  .loading-icons {
+    gap: 1.5rem;
+  }
+
+  .loading-icons i {
+    font-size: 1.5rem;
+  }
+}
