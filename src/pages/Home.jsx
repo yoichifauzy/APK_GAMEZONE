@@ -114,11 +114,7 @@ export default function Home() {
 
         <div className="hero__visual">
           <div className="hero__logo-container">
-            <img
-              src="/src/assets/gamezone.png"
-              alt="GamerZone"
-              className="hero__logo"
-            />
+            <img src="/gamezone.png" alt="GamerZone" className="hero__logo" />
             <div className="hero__logo-glow"></div>
           </div>
           <div className="floating-icons">

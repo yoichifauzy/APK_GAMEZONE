@@ -9,7 +9,7 @@ import "./styles/dropdown-bubbles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/APK_GAMEZONE">
       <App />
     </BrowserRouter>
   </React.StrictMode>
