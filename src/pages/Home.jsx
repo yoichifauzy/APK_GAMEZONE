@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import gamezoneImg from "../assets/gamezone.png";
 
 export default function Home() {
   const [particles] = useState(() =>
@@ -114,7 +115,7 @@ export default function Home() {
 
         <div className="hero__visual">
           <div className="hero__logo-container">
-            <img src="/gamezone.png" alt="GamerZone" className="hero__logo" />
+            <img src={gamezoneImg} alt="GamerZone" className="hero__logo" />
             <div className="hero__logo-glow"></div>
           </div>
           <div className="floating-icons">
