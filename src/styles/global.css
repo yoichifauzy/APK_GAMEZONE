@@ -110,7 +110,8 @@ a {
 }
 
 .app .main {
-  padding: 2rem;
+  /* Extra top padding to compensate for sticky/fixed navbar height */
+  padding: 6rem 2rem 2rem;
   min-height: calc(100vh - 200px);
   position: relative;
   z-index: 1;
@@ -122,9 +123,11 @@ a {
   background: rgba(26, 31, 53, 0.85);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  z-index: 1100;
   box-shadow: 0 4px 20px var(--shadow);
   transition: all 0.3s ease;
 }
