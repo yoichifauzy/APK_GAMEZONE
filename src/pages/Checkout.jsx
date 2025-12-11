@@ -98,18 +98,39 @@ export default function Checkout() {
         </form>
 
         <div className="checkout-summary">
-          <h3>Ringkasan Belanja</h3>
-          {cartItems.length > 0 && (
-            <ul>
+          <div className="checkout-summary__header">
+            <h3>Ringkasan Belanja</h3>
+            <p className="checkout-summary__subtitle">
+              Cek kembali pesanan sebelum membayar
+            </p>
+          </div>
+
+          {cartItems.length > 0 ? (
+            <ul className="checkout-summary__list">
               {cartItems.map((item) => (
-                <li key={item.id}>
-                  {item.name} x {item.quantity} = Rp{" "}
-                  {(item.price * item.quantity).toLocaleString("id-ID")}
+                <li key={item.id} className="checkout-summary__item">
+                  <div className="checkout-summary__item-info">
+                    <p className="checkout-summary__item-name">{item.name}</p>
+                    <span className="checkout-summary__item-meta">
+                      x{item.quantity} | Rp {item.price.toLocaleString("id-ID")}
+                    </span>
+                  </div>
+                  <span className="checkout-summary__item-amount">
+                    Rp {(item.price * item.quantity).toLocaleString("id-ID")}
+                  </span>
                 </li>
               ))}
             </ul>
+          ) : (
+            <p className="checkout-summary__empty">
+              Keranjang masih kosong. Tambahkan produk dahulu.
+            </p>
           )}
-          <p>Total: Rp {totalPrice.toLocaleString("id-ID")}</p>
+
+          <div className="checkout-summary__total">
+            <span>Total</span>
+            <strong>Rp {totalPrice.toLocaleString("id-ID")}</strong>
+          </div>
 
           {form.paymentMethod === "qris" && totalPrice > 0 && (
             <QrisQRCode
