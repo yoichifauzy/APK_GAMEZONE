@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script type="text/javascript">
+      // GitHub Pages SPA redirect
+      // This repo is published at https://<user>.github.io/APK_GAMEZONE/
+      // segmentCount=1 keeps the repo name in the base path.
+      (function () {
+        var segmentCount = 1;
+        var l = window.location;
+        var base = l.pathname
+          .split("/")
+          .slice(0, 1 + segmentCount)
+          .join("/");
+        var path = l.pathname
+          .split("/")
+          .slice(1 + segmentCount)
+          .join("/");
+        var search = l.search ? "&" + l.search.slice(1) : "";
+        l.replace(
+          l.protocol + "//" + l.host + base + "/?/" + path + search + l.hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
