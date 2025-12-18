@@ -1,10 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-import productsData from "../data/products.json";
 import { useCart } from "../context/useCart";
+import { getProducts } from "../utils/storeData";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const productsData = getProducts();
   const product = productsData.find((p) => p.id === Number(id));
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);

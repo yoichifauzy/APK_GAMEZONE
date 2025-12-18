@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
-import productsData from "../data/products.json";
 import ProductCard from "../components/ProductCard";
 import { exportProductsToExcel } from "../utils/exportToExcel";
+import { getProducts } from "../utils/storeData";
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get("category") || "all";
+
+  const [productsData] = useState(() => getProducts());
 
   const [search, setSearch] = useState("");
   const [minPrice, setMinPrice] = useState("");

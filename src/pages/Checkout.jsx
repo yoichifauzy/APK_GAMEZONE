@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../context/useCart";
 import QrisQRCode from "../components/QrisQRCode";
+import { addOrder, createOrderId } from "../utils/storeData";
 
 export default function Checkout() {
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -31,6 +32,21 @@ export default function Checkout() {
     const val = validate();
     setErrors(val);
     if (Object.keys(val).length === 0) {
+      const order = {
+        id: createOrderId(),
+        createdAt: new Date().toISOString(),
+        customer: {
+          name: form.name,
+          email: form.email,
+          address: form.address,
+        },
+        paymentMethod: form.paymentMethod,
+        items: cartItems,
+        totalPrice,
+        status: "Diterima",
+      };
+
+      addOrder(order);
       setSuccess(true);
       clearCart();
     }

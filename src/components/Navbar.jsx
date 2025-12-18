@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useCart } from "../context/useCart";
 import { useTheme } from "../context/useTheme";
 
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
   const { cartItems } = useCart();
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -96,6 +96,20 @@ export default function Navbar() {
             <i
               className={`fa-solid ${theme === "dark" ? "fa-sun" : "fa-moon"}`}
             ></i>
+          </button>
+
+          <button
+            type="button"
+            className="navbar__logout"
+            onClick={() => {
+              setMenuOpen(false);
+              onLogout?.();
+            }}
+            aria-label="Logout"
+            title="Logout"
+          >
+            <i className="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
           </button>
         </nav>
       </div>
